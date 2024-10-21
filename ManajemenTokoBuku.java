@@ -49,3 +49,37 @@ public class BookManagementSystem {
         System.out.println("Buku berhasil ditambahkan.");
     }
 
+    public static void reportStock() {
+    System.out.println("Laporan Stok Buku");
+    for (Book book : books) {
+        System.out.println(book);
+    }
+}
+
+public static void reduceBookStock() {
+    System.out.println("Pengurangan Stok Buku");
+    String title = input("Masukkan judul buku yang ingin dikurangi stoknya");
+    int amount = Integer.parseInt(input("Jumlah yang ingin dikurangi"));
+    for (Book book : books) {
+        if (book.title.equalsIgnoreCase(title)) {
+            book.stock -= amount;
+            System.out.println("Stok buku berhasil dikurangi.");
+            return;
+        }
+    }
+    System.out.println("Buku tidak ditemukan.");
+}
+
+public static void lowStockNotification() {
+    System.out.println("Notifikasi Stok Rendah");
+    for (Book book : books) {
+        if (book.stock < 5) {
+            System.out.println("Stok buku " + book.title + " rendah: " + book.stock + " unit tersisa.");
+        }
+    }
+}
+
+public static void trackTransactionHistory() {
+    // Placeholder for tracking transaction history.
+    System.out.println("Pelacakan Riwayat Transaksi belum diimplementasikan.");
+}
