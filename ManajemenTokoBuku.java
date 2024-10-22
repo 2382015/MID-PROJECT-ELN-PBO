@@ -92,3 +92,46 @@ public class ManajemenTokoBuku {
             System.out.println(book);
         }
     }
+    
+public static void reportStock() {
+        System.out.println("Laporan Stok Buku");
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
+
+    public static void reduceBookStock() {
+        System.out.println("Pengurangan Stok Buku");
+        String title = input("Masukkan judul buku yang ingin dikurangi stoknya");
+        int amount = Integer.parseInt(input("Jumlah yang ingin dikurangi"));
+        for (Book book : books) {
+            if (book.title.equalsIgnoreCase(title)) {
+                if (book.stock >= amount) {
+                    book.stock -= amount;
+                    System.out.println("Stok buku berhasil dikurangi.");
+                } else {
+                    System.out.println("Stok tidak mencukupi untuk dikurangi.");
+                }
+                return;
+            }
+        }
+        System.out.println("Buku tidak ditemukan.");
+    }
+
+    public static void lowStockNotification() {
+        System.out.println("Notifikasi Stok Rendah");
+        for (Book book : books) {
+            if (book.stock < 5) {
+                System.out.println("Stok buku " + book.title + " rendah: " + book.stock + " unit tersisa.");
+            }
+        }
+    }
+
+    public static void trackTransactionHistory() {
+        // Implementasi pelacakan riwayat transaksi
+        System.out.println("Pelacakan Riwayat Transaksi");
+        System.out.println("Masukkan detail transaksi (belum diimplementasikan): ");
+        String transactionDetails = input("Detail Transaksi");
+        // Simpan atau proses detail transaksi sesuai kebutuhan.
+        System.out.println("Detail transaksi diterima: " + transactionDetails);
+    }
