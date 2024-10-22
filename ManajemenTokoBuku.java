@@ -135,3 +135,110 @@ public static void reportStock() {
         // Simpan atau proses detail transaksi sesuai kebutuhan.
         System.out.println("Detail transaksi diterima: " + transactionDetails);
     }
+public static void manageSuppliers() {
+        // Implementasi manajemen pemasok buku
+        System.out.println("Manajemen Pemasok Buku");
+        String supplierName = input("Masukkan nama pemasok");
+        String supplierDetails = input("Masukkan detail pemasok");
+        // Simpan atau proses detail pemasok sesuai kebutuhan.
+        System.out.println("Pemasok " + supplierName + " dengan detail: " + supplierDetails + " telah ditambahkan.");
+    }
+
+    public static void forecastDemand() {
+        // Implementasi forecasting permintaan buku
+        System.out.println("Forecasting Permintaan Buku");
+        String bookTitle = input("Masukkan judul buku untuk forecasting");
+        String demandForecast = input("Masukkan perkiraan permintaan (misalnya: tinggi, sedang, rendah)");
+        // Simpan atau proses perkiraan permintaan sesuai kebutuhan.
+        System.out.println("Permintaan untuk buku " + bookTitle + " diperkirakan: " + demandForecast);
+    }
+
+    public static void expiredOrDamagedBookWarning() {
+        System.out.println("Peringatan Buku Kadaluarsa atau Rusak");
+        for (Book book : books) {
+            if (book.condition.equalsIgnoreCase("rusak") || !book.expiryDate.isEmpty()) {
+                System.out.println("Peringatan: Buku " + book.title + " dalam kondisi rusak atau kadaluarsa.");
+            }
+        }
+    }
+
+    public static void manageCategories() {
+        // Implementasi manajemen kategori buku
+        System.out.println("Manajemen Kategori Buku");
+        String categoryName = input("Masukkan nama kategori");
+        String categoryDetails = input("Masukkan detail kategori");
+        // Simpan atau proses detail kategori sesuai kebutuhan.
+        System.out.println("Kategori " + categoryName + " dengan detail: " + categoryDetails + " telah ditambahkan.");
+    }
+
+    public static String input(String prompt) {
+        System.out.println(prompt + ": ");
+        return scanner.nextLine();
+    }
+
+    public static void showMainMenu() {
+        boolean isRunning = true;
+        while (isRunning) {
+            System.out.println("\n--- Menu Manajemen Buku ---");
+            System.out.println("1. Pendaftaran Buku Baru");
+            System.out.println("2. Pengurangan Stok Buku");
+            System.out.println("3. Pembaruan Informasi Buku");
+            System.out.println("4. Pencarian dan Penyortiran Buku");
+            System.out.println("5. Laporan Stok Buku");
+            System.out.println("6. Penghapusan Buku");
+            System.out.println("7. Notifikasi Stok Rendah");
+            System.out.println("8. Pelacakan Riwayat Transaksi");
+            System.out.println("9. Manajemen Pemasok Buku");
+            System.out.println("10. Forecasting Permintaan Buku");
+            System.out.println("11. Peringatan Buku Kadaluarsa atau Rusak");
+            System.out.println("12. Manajemen Kategori Buku");
+            System.out.println("13. Keluar");
+
+            String selectedMenu = input("Pilih menu");
+
+            switch (selectedMenu) {
+                case "1":
+                    registerBook();
+                    break;
+                case "2":
+                    reduceBookStock();
+                    break;
+                case "3":
+                    updateBookInfo();
+                    break;
+                case "4":
+                    searchAndSortBooks();
+                    break;
+                case "5":
+                    reportStock();
+                    break;
+                case "6":
+                    removeBook();
+                    break;
+                case "7":
+                    lowStockNotification();
+                    break;
+                case "8":
+                    trackTransactionHistory();
+                    break;
+                case "9":
+                    manageSuppliers();
+                    break;
+                case "10":
+                    forecastDemand();
+                    break;
+                case "11":
+                    expiredOrDamagedBookWarning();
+                    break;
+                case "12":
+                    manageCategories();
+                    break;
+                case "13":
+                    isRunning = false;
+                    break;
+                default:
+                    System.out.println("Pilih menu dengan benar.");
+            }
+        }
+    }
+}
